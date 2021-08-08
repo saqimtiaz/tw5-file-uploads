@@ -1,0 +1,3 @@
+title: $:/plugins/tiddlywiki/file-uploads-fission/readme
+
+Fission uploader module for the File Uploads plugin. Saves uploads to Fission's Webnative file system which is based on IPFS.

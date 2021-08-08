@@ -1,0 +1,4 @@
+caption: upload
+title: $:/plugins/tiddlywiki/file-uploads/images/upload
+
+<svg width="22pt" height="22pt" class="tc-image-tmd-upload tc-image-button" viewBox="0 0 24 24"><path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z" /></svg>

@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/tiddlywiki/file-uploads-github",
+	"description": "Github uploader for uploading binary files to external storage",
+	"name": "File Uploads: Github",
+	"author": "Saq Imtiaz",
+	"core-version": ">=5.1.23",
+	"plugin-priority": 0,
+	"list": "readme settings license",
+	"parent-plugin": "$:/plugins/tiddlywiki/file-uploads",
+	"version": "0.1.0"
+}

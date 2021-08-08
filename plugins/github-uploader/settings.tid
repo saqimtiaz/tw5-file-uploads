@@ -1,0 +1,6 @@
+title: $:/plugins/tiddlywiki/file-uploads-github/settings
+
+Please configure the Github repository, username and personal access token in the [[Github Saver settings|$:/core/ui/ControlPanel/Saving/GitHub]].
+
+[[Github upload path relative to root|$:/config/file-uploads/github/uploadpath]]: 
+<$edit-text tiddler="$:/config/file-uploads/github/uploadpath" field="text" tag="input" />

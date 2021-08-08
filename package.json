@@ -1,0 +1,25 @@
+{
+  "name": "tw5-file-uploads",
+  "version": "0.1.0",
+  "description": "tw5 plugin",
+  "dependencies": {
+    "tiddlywiki": "^5.1.23"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "build": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build index",
+    "dev": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki/tiddlywiki.js . --listen port=7111"
+  },
+  "author": "Saq Imtiaz",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:saqimtiaz/tw5-file-uploads.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saqimtiaz/tw5-file-uploads/issues"
+  },
+  "homepage": "https://saqimtiaz.github.io/tw5-file-uploads/"
+}

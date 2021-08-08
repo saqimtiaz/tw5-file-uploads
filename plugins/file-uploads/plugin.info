@@ -1,0 +1,10 @@
+{
+	"title": "$:/plugins/tiddlywiki/file-uploads",
+	"name": "File Uploads",
+	"description": "Upload binary files to external storage",
+	"author": "Saq Imtiaz",
+	"core-version": ">=5.1.23",
+	"plugin-priority": 0,
+	"list": "readme settings",
+	"version": "0.1.0"
+}

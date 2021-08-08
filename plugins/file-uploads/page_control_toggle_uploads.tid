@@ -1,0 +1,20 @@
+title: $:/plugins/tiddlywiki/file-uploads/Buttons/toggle-uploads
+tags: $:/tags/PageControls
+caption: {{$:/plugins/tiddlywiki/file-uploads/images/upload}} Toggle file uploads
+description: Enable/disable uploading binary tiddlers
+
+\define toggleActions()
+<$action-setfield $tiddler="$:/config/fileUploads/uploadsEnabled" text={{{ [{$:/config/fileUploads/uploadsEnabled}match[yes]then[no]else[yes]] }}}/>
+\end
+
+\whitespace trim
+<$button tooltip="Toggle file uploads" aria-label="Toggle file uploads" class=<<tv-config-toolbar-class>> actions=<<toggleActions>> >
+	<$list filter="[<tv-config-toolbar-icons>match[yes]]" variable="listItem">
+		<$transclude tiddler={{{ [{$:/config/fileUploads/uploadsEnabled}match[no]then[$:/plugins/tiddlywiki/file-uploads/images/upload-off]] :else[[$:/plugins/tiddlywiki/file-uploads/images/upload]] }}}/>
+	</$list>
+	<$list filter="[<tv-config-toolbar-text>match[yes]]">
+		<span class="tc-btn-text">
+			<$text text="Toggle file uploads"/>
+		</span>
+	</$list>
+</$button>

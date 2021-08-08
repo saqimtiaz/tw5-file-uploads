@@ -1,0 +1,4 @@
+title: $:/plugins/tiddlywiki/file-uploads-fission/settings
+
+[[Upload folder path relative to root of public folder|$:/config/file-uploads/fission/uploadpath]]: 
+<$edit-text tiddler="$:/config/file-uploads/fission/uploadpath" field="text" tag="input" />

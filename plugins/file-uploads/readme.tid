@@ -1,0 +1,7 @@
+title: $:/plugins/tiddlywiki/file-uploads/readme
+
+Experimental plugin in active development for uploading binary tiddlers to different storage backends and creating canonical_uri tiddlers in their stead.
+
+Storage backends are pluggable and can be added via uploader modules. This plugin includes a "dummy" uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.
+
+After installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/tiddlywiki/file-uploads/settings]] of this plugin.

@@ -1,0 +1,3 @@
+title: $:/config/fileUploadFilter
+
+[all[tiddlers]is[binary]!is[draft]!has[_canonical_uri]] :filter[get[text]length[]compare:integer:gteq[100000]]

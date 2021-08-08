@@ -1,0 +1,12 @@
+{
+	"tiddlers": [
+		{
+			"file": "octokat.compressed.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/tiddlywiki/file-uploads-github/octokat.js",
+				"module-type": "library"
+			}
+		}
+	]
+}
