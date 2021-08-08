@@ -1,4 +1,6 @@
 In development plugin for [TiddlyWiki5](https://github.com/Jermolene/TiddlyWiki5) that uploads binary tiddlers to external storage and creates canonical_uri tiddlers in their stead.
+Beta release available at https://saqimtiaz.github.io/tw5-file-uploads/
+
 The File Uploads plugin supports multiple pluggable storage backends via uploader modules:
 
 * Fission Webnative
