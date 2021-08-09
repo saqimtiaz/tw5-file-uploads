@@ -169,7 +169,7 @@ GithubUploader.prototype.deinitialize = function(callback) {
 	api.commit(this.files,"Uploaded by TiddlyWiki")
 		.then(() => callback())
 		.catch((err) => {
-			self.logger.alert("`Error uploading to github: ${err} in uploader deinitialize`");
+			self.logger.alert(`Error uploading to github: ${err} in uploader deinitialize`);
 			callback(err);
 		});
 };
