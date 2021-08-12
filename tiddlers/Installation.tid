@@ -1,0 +1,14 @@
+created: 20210812210915298
+modified: 20210812211927849
+tags: 
+title: Installation
+type: text/vnd.tiddlywiki
+
+Drag and drop the File Uploads plugin as well as one of the uploader modules to your wiki, save and reload. Then choose and configure the uploader in the settings tab of the File Uploads plugin.
+
+''[[File Uploads plugin (beta)|$:/plugins/tiddlywiki/file-uploads]]''
+
+Uploader modules:
+
+* [[Fission uploader|$:/plugins/tiddlywiki/file-uploads-fission]]
+* [[Github uploader|$:/plugins/tiddlywiki/file-uploads-github]]

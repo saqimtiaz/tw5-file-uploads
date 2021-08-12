@@ -9,4 +9,6 @@ The File Uploads plugin supports multiple pluggable storage backends via uploade
 
 The plugin itself includes a "dummy" uploader module which implements the interface required of uploader modules but just mocks uploading by logging to the browser developer console.
 
+It is recommended to **disable AutoSave when using this plugin**, to avoid saving imported binary tiddlers twice and using up twice the bandwidth.
+
 The development of this plugin and the uploader modules is being funded via [OpenCollective](https://opencollective.com/tiddlywiki-on-fission/projects/tiddlywiki-file-upload)
