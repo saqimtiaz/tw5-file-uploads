@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>My TiddlyWiki — a non-linear personal web notebook</title>
+<title>File Uploads plugin — beta</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -161,6 +161,10 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/highlight</li>
 
+<li>$:/SiteSubtitle</li>
+
+<li>$:/SiteTitle</li>
+
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
@@ -168,6 +172,10 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>GettingStarted</li>
+
+<li>Installation</li>
 
 </ul>
 </p>
@@ -10116,7 +10124,7 @@ Error message and password prompt
         },
         &quot;$:/plugins/tiddlywiki/file-uploads/readme&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads/readme&quot;,
-            &quot;text&quot;: &quot;Experimental plugin in active development for uploading binary tiddlers to different storage backends and creating canonical_uri tiddlers in their stead.\n\nStorage backends are pluggable and can be added via uploader modules. This plugin includes a \&quot;dummy\&quot; uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.\n\nAfter installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/tiddlywiki/file-uploads/settings]] of this plugin.\n&quot;
+            &quot;text&quot;: &quot;Experimental plugin in active development for uploading binary tiddlers to different storage backends and creating canonical_uri tiddlers in their stead.\n\nIt is recommended to ''disable ~AutoSave when using this plugin'', to avoid saving imported binary tiddlers twice and using up twice the bandwidth.\n\nStorage backends are pluggable and can be added via uploader modules. This plugin includes a \&quot;dummy\&quot; uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.\n\nAfter installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/tiddlywiki/file-uploads/settings]] of this plugin.\n&quot;
         },
         &quot;$:/plugins/tiddlywiki/file-uploads/settings&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads/settings&quot;,
@@ -10152,7 +10160,7 @@ Error message and password prompt
         },
         &quot;$:/plugins/tiddlywiki/file-uploads-fission/readme&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads-fission/readme&quot;,
-            &quot;text&quot;: &quot;Fission uploader module for the File Uploads plugin. Saves uploads to Fission's Webnative file system which is based on IPFS.\n&quot;
+            &quot;text&quot;: &quot;Fission uploader module for the File Uploads plugin. Saves uploads to Fission's Webnative file system which is based on IPFS.\n\nMeant for use on [[TiddlyWiki on Fission|https://tiddlywiki.fission.app/]]&quot;
         },
         &quot;$:/plugins/tiddlywiki/file-uploads-fission/settings&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads-fission/settings&quot;,
@@ -10186,7 +10194,7 @@ Error message and password prompt
         },
         &quot;$:/plugins/tiddlywiki/file-uploads-github/readme&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads-github/readme&quot;,
-            &quot;text&quot;: &quot;Experimental proof of concept Github uploader module for the File Uploads plugin. Saves uploads to Github for use with Github pages. Based on the Octokat library.\n&quot;
+            &quot;text&quot;: &quot;''Experimental'' proof of concept Github uploader module for the File Uploads plugin. Saves uploads to Github for use with Github pages. Based on the Octokat library. Requires that credentials have been filled in for the [[Github saver|$:/core/ui/ControlPanel/Saving/GitHub]].\n\nIntended for use with wikis hosted on Github Pages. \n\nPlease see:\n\n* The [[terms of service and guidelines|https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages]] for using Github Pages. \n* How to for [[hosting a TiddlyWiki on Github Pages|https://kookma.github.io/TW5-GitHub-Saver/]].&quot;
         },
         &quot;$:/plugins/tiddlywiki/file-uploads-github/settings&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads-github/settings&quot;,
@@ -10265,10 +10273,16 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20210812211516724" modified="20210812211517870" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>beta</pre>
+</div>
+<div created="20210812211512218" modified="20210812211515612" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>File Uploads plugin</pre>
+</div>
 <div title="$:/status/RequireReloadDueToPluginChange" revision="0" bag="default">
 <pre>no</pre>
 </div>
-<div list="$:/plugins/tiddlywiki/file-uploads" title="$:/StoryList" revision="1" bag="default">
+<div list="GettingStarted Installation" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23" revision="0" bag="default">
@@ -10379,6 +10393,35 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20210812210813626" modified="20210812211855772" tags="" title="GettingStarted" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>In development plugin for ~TiddlyWiki5 that uploads binary tiddlers to external storage and creates `canonical_uri` tiddlers in their stead.
+
+The ''File Uploads plugin'' supports multiple pluggable storage backends via uploader modules:
+
+* Fission Webnative
+* Github (experimental)
+* others hopefully to be added such as Amazon S3, nodejs, Imgur etc.
+
+The plugin itself includes a &quot;dummy&quot; uploader module which implements the interface required of uploader modules but just mocks uploading by logging to the browser developer console.
+
+It is recommended to ''disable ~AutoSave when using this plugin'', to avoid saving imported binary tiddlers twice and using up twice the bandwidth.
+
+The development of this plugin and the uploader modules is being funded and driven via [[OpenCollective|https://opencollective.com/tiddlywiki-on-fission/projects/tiddlywiki-file-upload]].
+
+Thank you to all of our backers!
+
+&lt;a href=&quot;https://opencollective.com/tiddlywiki-on-fission/projects/tiddlywiki-file-upload&quot; target=&quot;_blank&quot;&gt;[img[https://opencollective.com/tiddlywiki-on-fission/tiers/backer.svg?avatarHeight=36&amp;width=600]]&lt;/a&gt;</pre>
+</div>
+<div created="20210812210915298" modified="20210812211927849" tags="" title="Installation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Drag and drop the File Uploads plugin as well as one of the uploader modules to your wiki, save and reload. Then choose and configure the uploader in the settings tab of the File Uploads plugin.
+
+''[[File Uploads plugin (beta)|$:/plugins/tiddlywiki/file-uploads]]''
+
+Uploader modules:
+
+* [[Fission uploader|$:/plugins/tiddlywiki/file-uploads-fission]]
+* [[Github uploader|$:/plugins/tiddlywiki/file-uploads-github]]</pre>
 </div>
 
 
