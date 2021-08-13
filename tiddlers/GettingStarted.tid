@@ -4,7 +4,7 @@ tags:
 title: GettingStarted
 type: text/vnd.tiddlywiki
 
-In development plugin for ~TiddlyWiki5 that uploads binary tiddlers to external storage and creates `canonical_uri` tiddlers in their stead.
+Under development plugin for ~TiddlyWiki5 that uploads binary tiddlers to external storage and creates `_canonical_uri` tiddlers in their stead.
 
 The ''File Uploads plugin'' supports multiple pluggable storage backends via uploader modules:
 
