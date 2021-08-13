@@ -90,16 +90,17 @@ function github(options) {
 }
 
 exports.create = function(params) {
-	var githubInfo = {
-		username: $tw.wiki.getTiddlerText("$:/GitHub/Username","").trim(),
-		//To Do: $:/Github/Repo has target repository in the form Username/Reponame and we need only the repo
-		reponame: $tw.wiki.getTiddlerText("$:/GitHub/Repo","").trim(),
-		token: ($tw.utils.getPassword("github") || "").trim()
-	}
-	if(!githubInfo.username || !githubInfo.reponame || !githubInfo.token) {
-		//alert("Github repository details are not properly configured. Cannot upload files.");
+	var reponame = $tw.wiki.getTiddlerText("$:/GitHub/Repo"),
+		username = $tw.wiki.getTiddlerText("$:/GitHub/Username"),
+		token = $tw.utils.getPassword("github");
+	if(!username || !reponame || !token) {
 		params.logger.alert("Github repository details are not properly configured. Cannot upload files.");
 		return null;
+	}
+	var githubInfo = {
+		username: username.trim(),
+		reponame: reponame.trim().split("/").pop(),
+		token: token.trim()
 	}
 	return new GithubUploader(params,githubInfo);
 };
