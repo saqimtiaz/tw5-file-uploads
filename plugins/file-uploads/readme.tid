@@ -7,3 +7,5 @@ It is recommended to ''disable ~AutoSave when using this plugin'', to avoid savi
 Storage backends are pluggable and can be added via uploader modules. This plugin includes a "dummy" uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.
 
 After installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/tiddlywiki/file-uploads/settings]] of this plugin.
+
+This plugin uses a [[filter|$:/config/fileUploadFilter]] to determine which tiddlers are uploaded. The default filter uploads all binary tiddlers over 100kb in size.
