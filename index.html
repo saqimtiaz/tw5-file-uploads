@@ -10124,7 +10124,7 @@ Error message and password prompt
         },
         &quot;$:/plugins/tiddlywiki/file-uploads/readme&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads/readme&quot;,
-            &quot;text&quot;: &quot;Experimental plugin in active development for uploading binary tiddlers to different storage backends and creating canonical_uri tiddlers in their stead.\n\nIt is recommended to ''disable ~AutoSave when using this plugin'', to avoid saving imported binary tiddlers twice and using up twice the bandwidth.\n\nStorage backends are pluggable and can be added via uploader modules. This plugin includes a \&quot;dummy\&quot; uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.\n\nAfter installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/tiddlywiki/file-uploads/settings]] of this plugin.\n&quot;
+            &quot;text&quot;: &quot;Experimental plugin in active development for uploading binary tiddlers to different storage backends and creating canonical_uri tiddlers in their stead.\n\nIt is recommended to ''disable ~AutoSave when using this plugin'', to avoid saving imported binary tiddlers twice and using up twice the bandwidth.\n\nStorage backends are pluggable and can be added via uploader modules. This plugin includes a \&quot;dummy\&quot; uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.\n\nAfter installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/tiddlywiki/file-uploads/settings]] of this plugin.\n\nThis plugin uses a [[filter|$:/config/fileUploadFilter]] to determine which tiddlers are uploaded. The default filter uploads all binary tiddlers over 100kb in size.\n&quot;
         },
         &quot;$:/plugins/tiddlywiki/file-uploads/settings&quot;: {
             &quot;title&quot;: &quot;$:/plugins/tiddlywiki/file-uploads/settings&quot;,
@@ -10406,6 +10406,8 @@ The ''File Uploads plugin'' supports multiple pluggable storage backends via upl
 The plugin itself includes a &quot;dummy&quot; uploader module which implements the interface required of uploader modules but just mocks uploading by logging to the browser developer console.
 
 It is recommended to ''disable ~AutoSave when using this plugin'', to avoid saving imported binary tiddlers twice and using up twice the bandwidth.
+
+This plugin uses a [[filter|$:/config/fileUploadFilter]] to determine which tiddlers are uploaded. The default filter uploads all binary tiddlers over 100kb in size.
 
 The development of this plugin and the uploader modules is being funded and driven via [[OpenCollective|https://opencollective.com/tiddlywiki-on-fission/projects/tiddlywiki-file-upload]].
 
