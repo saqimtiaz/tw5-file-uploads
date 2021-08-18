@@ -93,11 +93,11 @@ callback accepts two arguments:
 */
 FissionUploader.prototype.uploadFile = function(uploadItem,callback) {  
 	var self = this,
-		path = this._getUploadPath(uploadItem);
+		path = this._getUploadPath(uploadItem),
+		uploadInfo = { title: uploadItem.title };
 	//this.items.push(uploadItem);
 	self.fs.add(path,self._prepareUploadData(uploadItem)).then(function() {
-		var uploadInfo = { title: uploadItem.title },
-			canonical_uri = self._getCanonicalURI(uploadItem);
+		var	canonical_uri = self._getCanonicalURI(uploadItem);
 		self.logger.log(`Saved to ${path.file.join("/")} with canonical_uri ${canonical_uri}`);
 		 // Set the canonical_uri
 		uploadInfo.canonical_uri = canonical_uri;
