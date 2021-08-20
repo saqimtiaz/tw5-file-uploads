@@ -10,6 +10,27 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
+      - name: Advance latest tag
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}          
+          script: |
+            try {
+                await github.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: "tags/latest"
+                })
+            } catch (e) {
+              console.log("The latest tag doesn't exist yet: " + e)
+            }
+            await github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/latest",
+              sha: context.sha
+            })
+            
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
         with:
