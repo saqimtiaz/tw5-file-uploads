@@ -1,4 +1,4 @@
-title: $:/plugins/tiddlywiki/file-uploads-fission/settings
+title: $:/plugins/commons/file-uploads-fission/settings
 
 [[Type of canonical URI|$:/config/file-uploads/fission/canonical-uri-type]]:
 <$select tiddler="$:/config/file-uploads/fission/canonical-uri-type" default="direct">
@@ -7,7 +7,7 @@ title: $:/plugins/tiddlywiki/file-uploads-fission/settings
 </$list>
 </$select>
 
-<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[archival]]" variable="_NULL">
+<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[direct]]" variable="_NULL">
 [[IPFS Gateway|$:/config/file-uploads/fission/ipfs-gateway]]:
 <$select tiddler="$:/config/file-uploads/fission/ipfs-gateway" default="ipfs.runfission.com">
 <$list filter='ipfs.runfission.com ipfs.io'>

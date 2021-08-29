@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/file-uploads/filters/uploaders.js
+title: $:/plugins/commons/file-uploads/filters/uploaders.js
 type: application/javascript
 module-type: filteroperator
 

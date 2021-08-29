@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/file-uploads-fission/uploader.js
+title: $:/plugins/commons/file-uploads-fission/uploader.js
 type: application/javascript
 module-type: uploader
 

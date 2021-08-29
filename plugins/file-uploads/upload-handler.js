@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/file-uploads/uploadhandler.js
+title: $:/plugins/commons/file-uploads/uploadhandler.js
 type: application/javascript
 module-type: global
 The upload handler manages uploading binary tiddlers to external storage.
@@ -12,8 +12,8 @@ The upload handler manages uploading binary tiddlers to external storage.
 
 UploadHandler.prototype.titleFileUploadFilter = "$:/config/fileUploadFilter";
 UploadHandler.prototype.titleUploader = "$:/config/fileUploader";
-UploadHandler.prototype.titleUploadedNotification = "$:/plugins/tiddlywiki/file-uploads/Notifications/Uploaded";
-UploadHandler.prototype.titleUploadingNotification = "$:/plugins/tiddlywiki/file-uploads/Notifications/Uploading";
+UploadHandler.prototype.titleUploadedNotification = "$:/plugins/commons/file-uploads/Notifications/Uploaded";
+UploadHandler.prototype.titleUploadingNotification = "$:/plugins/commons/file-uploads/Notifications/Uploading";
 UploadHandler.prototype.titleUploadsEnabled = "$:/config/fileUploads/uploadsEnabled";
 
 function UploadHandler(options) {

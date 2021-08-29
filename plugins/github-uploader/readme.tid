@@ -1,4 +1,4 @@
-title: $:/plugins/tiddlywiki/file-uploads-github/readme
+title: $:/plugins/commons/file-uploads-github/readme
 
 ''Experimental'' proof of concept Github uploader module for the File Uploads plugin. Saves uploads to Github for use with Github pages. Based on the Octokat library. Requires that credentials have been filled in for the [[Github saver|$:/core/ui/ControlPanel/Saving/GitHub]].
 

@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/file-uploads-github/uploader.js
+title: $:/plugins/commons/file-uploads-github/uploader.js
 type: application/javascript
 module-type: uploader
 
@@ -19,7 +19,7 @@ exports.name = "github";
 
 'use strict';
 
-var Octokat = require("$:/plugins/tiddlywiki/file-uploads-github/octokat.js");
+var Octokat = require("$:/plugins/commons/file-uploads-github/octokat.js");
 
 var defaults = {
 	branchName: 'main',

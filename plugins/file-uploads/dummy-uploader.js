@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/file-uploads/dummy-uploader.js
+title: $:/plugins/commons/file-uploads/dummy-uploader.js
 type: application/javascript
 module-type: uploader
 

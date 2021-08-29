@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/tiddlywiki/file-uploads/startup.js
+title: $:/plugins/commons/file-uploads/startup.js
 type: application/javascript
 module-type: startup
 \*/

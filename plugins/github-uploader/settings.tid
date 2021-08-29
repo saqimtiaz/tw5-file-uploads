@@ -1,4 +1,4 @@
-title: $:/plugins/tiddlywiki/file-uploads-github/settings
+title: $:/plugins/commons/file-uploads-github/settings
 
 Please configure the Github repository, username and personal access token in the [[Github Saver settings|$:/core/ui/ControlPanel/Saving/GitHub]].
 

@@ -1,4 +1,4 @@
-title: $:/plugins/tiddlywiki/file-uploads/settings
+title: $:/plugins/commons/file-uploads/settings
 
 File uploader modules add support for different storage backends to upload files to.
 
@@ -8,7 +8,7 @@ File uploader modules add support for different storage backends to upload files
 </$list>
 </$select>
 
-<$vars uploaderPlugin={{{ [[$:/plugins/tiddlywiki/file-uploads-]addsuffix{$:/config/fileUploader}]" }}}>
+<$vars uploaderPlugin={{{ [[$:/plugins/commons/file-uploads-]addsuffix{$:/config/fileUploader}]" }}}>
 <$list filter="[<uploaderPlugin>plugintiddlers[]] :filter[removeprefix<uploaderPlugin>match[/settings]]" variable="settingsTiddler">
 
 	<$transclude tiddler=<<uploaderPlugin>> subtiddler=<<settingsTiddler>>/>
