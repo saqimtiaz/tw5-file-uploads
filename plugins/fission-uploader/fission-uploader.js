@@ -68,10 +68,20 @@ FissionUploader.prototype._prepareUploadData = function (uploadItem) {
 };
 
 // Returns the canonical_uri for a file that has been uploaded
-FissionUploader.prototype._getCanonicalURI = function(uploadItem) {
-	var filePath = this.outputBasePath.slice(1);
+async function getCanonicalURI(uploadItem,uploader) {
+	const uriType = $tw.wiki.getTiddlerText("$:/config/file-uploads/fission/canonical-uri-type","public").trim();
+	var filePath = uploader.outputBasePath.slice(1);
 	filePath.push(uploadItem.filename);
-	return `https://${fissionUserName}.files.fission.name/p/${filePath.join("/")}`;
+	if(uriType === "public") {
+		return `https://${fissionUserName}.files.fission.name/p/${filePath.join("/")}`;		
+	} else {
+		const ipfsGateway = $tw.wiki.getTiddlerText("$:/config/file-uploads/fission/ipfs-gateway","ipfs.runfission.com").trim();
+		const rootCid = await uploader.fs.root.put();
+		//const archivalLink = `/ipfs/${rootCid}/p/${filePath.join("/")}`;
+		const ipfs = await uploader.webnative.ipfs.get();
+		const { cid } = await ipfs.files.stat(`/ipfs/${rootCid}/p/${filePath.join("/")}`);
+		return `https://${ipfsGateway}/ipfs/${cid.toBaseEncodedString()}`;
+	}
 }
 
 // Returns the path object representing the path to which the file will be saved
@@ -97,7 +107,8 @@ FissionUploader.prototype.uploadFile = function(uploadItem,callback) {
 		uploadInfo = { title: uploadItem.title };
 	//this.items.push(uploadItem);
 	self.fs.add(path,self._prepareUploadData(uploadItem)).then(function() {
-		var	canonical_uri = self._getCanonicalURI(uploadItem);
+		return getCanonicalURI(uploadItem,self);
+	}).then(function(canonical_uri) {
 		self.logger.log(`Saved to ${path.file.join("/")} with canonical_uri ${canonical_uri}`);
 		 // Set the canonical_uri
 		uploadInfo.canonical_uri = canonical_uri;

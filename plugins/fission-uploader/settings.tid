@@ -1,7 +1,27 @@
 title: $:/plugins/tiddlywiki/file-uploads-fission/settings
 
+[[Type of canonical URI|$:/config/file-uploads/fission/canonical-uri-type]]:
+<$select tiddler="$:/config/file-uploads/fission/canonical-uri-type" default="direct">
+<$list filter='direct public'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+
+<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[archival]]" variable="_NULL">
+[[IPFS Gateway|$:/config/file-uploads/fission/ipfs-gateway]]:
+<$select tiddler="$:/config/file-uploads/fission/ipfs-gateway" default="ipfs.runfission.com">
+<$list filter='ipfs.runfission.com ipfs.io'>
+<option value=<<currentTiddler>>><$view field='title'/></option>
+</$list>
+</$select>
+</$list>
+
 [[Upload folder path relative to root of public folder|$:/config/file-uploads/fission/uploadpath]]: 
 <$edit-text tiddler="$:/config/file-uploads/fission/uploadpath" field="text" tag="input" />
 
+<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[public]]" variable="_NULL">
 URL of configured upload folder:
 //<$text text={{{ [[https://fissionUserName.files.fission.name/p/]addsuffix{$:/config/file-uploads/fission/uploadpath}] }}}/>//
+</$list>
+
+
