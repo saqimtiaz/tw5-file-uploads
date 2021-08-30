@@ -9,11 +9,7 @@ title: $:/plugins/commons/file-uploads-fission/settings
 
 <$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[direct IPFS]]" variable="_NULL">
 [[IPFS Gateway|$:/config/file-uploads/fission/ipfs-gateway]]:
-<$select tiddler="$:/config/file-uploads/fission/ipfs-gateway" default="ipfs.runfission.com">
-<$list filter='ipfs.runfission.com ipfs.io'>
-<option value=<<currentTiddler>>><$view field='title'/></option>
-</$list>
-</$select>
+<$edit-text tiddler="$:/config/file-uploads/fission/ipfs-gateway" field="text" tag="input" />
 </$list>
 
 [[Upload folder path relative to root of public folder|$:/config/file-uploads/fission/uploadpath]]: 
