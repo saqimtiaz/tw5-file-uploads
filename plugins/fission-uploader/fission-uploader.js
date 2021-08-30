@@ -27,7 +27,6 @@ exports.create = function(params) {
 		}
 		return new FissionUploader(params,webnative,webnativeDetails.fs);
 	}
-	//alert("Webnative is not available, are you using TiddlyWiki on Fission?");
 	params.logger.alert("Fission uploader could not be initialized. \n Webnative is not available, are you using ~TiddlyWiki on Fission?");
 	return null;
 };
@@ -38,7 +37,6 @@ function FissionUploader(params,webnative,fs) {
 	this.params = params || {};
 	this.logger = new $tw.utils.Logger("fission-uploader");
 	this.fs = fs;
-	// TODO Path should be taken from a config tiddler specific to the uploader
 	this.outputBasePath = ["public"];
 	var uploadFolder = $tw.wiki.getTiddlerText("$:/config/file-uploads/fission/uploadpath","files").trim().replace(/^\/|\/$/gm,"");
 	var uploadPath = uploadFolder.split("/");
@@ -77,7 +75,6 @@ async function getCanonicalURI(uploadItem,uploader) {
 	} else {
 		const ipfsGateway = $tw.wiki.getTiddlerText("$:/config/file-uploads/fission/ipfs-gateway","ipfs.runfission.com").trim();
 		const rootCid = await uploader.fs.root.put();
-		//const archivalLink = `/ipfs/${rootCid}/p/${filePath.join("/")}`;
 		const ipfs = await uploader.webnative.ipfs.get();
 		const { cid } = await ipfs.files.stat(`/ipfs/${rootCid}/p/${filePath.join("/")}`);
 		return `https://${ipfsGateway}/ipfs/${cid.toBaseEncodedString()}`;
@@ -105,7 +102,6 @@ FissionUploader.prototype.uploadFile = function(uploadItem,callback) {
 	var self = this,
 		path = this._getUploadPath(uploadItem),
 		uploadInfo = { title: uploadItem.title };
-	//this.items.push(uploadItem);
 	self.fs.add(path,self._prepareUploadData(uploadItem)).then(function() {
 		return getCanonicalURI(uploadItem,self);
 	}).then(function(canonical_uri) {

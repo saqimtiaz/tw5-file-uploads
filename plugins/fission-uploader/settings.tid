@@ -1,13 +1,13 @@
 title: $:/plugins/commons/file-uploads-fission/settings
 
 [[Type of canonical URI|$:/config/file-uploads/fission/canonical-uri-type]]:
-<$select tiddler="$:/config/file-uploads/fission/canonical-uri-type" default="direct">
-<$list filter='direct public'>
+<$select tiddler="$:/config/file-uploads/fission/canonical-uri-type" default="direct IPFS">
+<$list filter='[[direct IPFS]] public'>
 <option value=<<currentTiddler>>><$view field='title'/></option>
 </$list>
 </$select>
 
-<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[direct]]" variable="_NULL">
+<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[direct IPFS]]" variable="_NULL">
 [[IPFS Gateway|$:/config/file-uploads/fission/ipfs-gateway]]:
 <$select tiddler="$:/config/file-uploads/fission/ipfs-gateway" default="ipfs.runfission.com">
 <$list filter='ipfs.runfission.com ipfs.io'>
