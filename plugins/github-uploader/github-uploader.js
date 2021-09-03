@@ -129,13 +129,15 @@ GithubUploader.prototype._getFilePath = function() {
 
 /*
 Arguments:
-uploadItem: object representing tiddler to be uploaded
+uploadItem: object of type UploadItem representing tiddler to be uploaded
 callback accepts two arguments:
 	err: error object if there was an error
 	uploadItemInfo: object corresponding to the tiddler being uploaded with the following properties set:
 	- title
 	- canonical_uri (if available)
 	- uploadComplete (boolean)
+	- getUint8Array()
+	- getBlob()
 */
 GithubUploader.prototype.uploadFile = function(uploadItem,callback) {  
 	var self = this,

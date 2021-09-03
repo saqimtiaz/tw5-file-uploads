@@ -54,12 +54,7 @@ FissionUploader.prototype.initialize = function(callback) {
 // Converts base64 data into a form accepted by the backend for saving
 FissionUploader.prototype._prepareUploadData = function (uploadItem) {
 	if(uploadItem.isBase64) {
-		const byteArray = Uint8Array.from(
-			atob(uploadItem.text)
-				.split('')
-				.map(char => char.charCodeAt(0))
-		);
-		return byteArray;    
+		return uploadItem.getUint8Array();
 	} else {
 		return uploadItem.text;
 	}
@@ -90,13 +85,15 @@ FissionUploader.prototype._getUploadPath = function(uploadItem) {
 
 /*
 Arguments:
-uploadItem: object representing tiddler to be uploaded
+uploadItem: object of type UploadItem representing tiddler to be uploaded
 callback accepts two arguments:
 	err: error object if there was an error
 	uploadItemInfo: object corresponding to the tiddler being uploaded with the following properties set:
 	- title
 	- canonical_uri (if available)
 	- uploadComplete (boolean)
+	- getUint8Array()
+	- getBlob()
 */
 FissionUploader.prototype.uploadFile = function(uploadItem,callback) {  
 	var self = this,

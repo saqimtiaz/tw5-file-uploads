@@ -49,8 +49,8 @@ DummyUploader.prototype.uploadFile = function(uploadItem,callback) {
 		uploadInfo = { title: uploadItem.title };
 	//this.items.push(uploadItem);
 	// Mock uploading the file by logging to console.
-	this.logger.log(`Saved ${uploadItem.title}`);
-	var canonical_uri = `https://myusername.files.fission.name/p/${uploadItem.filename}`
+	this.logger.log("Saved " + uploadItem.title);
+	var canonical_uri = "https://myusername.files.fission.name/p/" + uploadItem.filename;
 	// Set the canonical_uri if available 
 	uploadInfo.canonical_uri = canonical_uri;
 	// Set updateProgress to true if the progress bar should be updated

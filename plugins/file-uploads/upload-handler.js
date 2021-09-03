@@ -145,13 +145,13 @@ UploadTask.prototype.makeCanonicalURITiddler = function(title) {
 	if(tiddler && canonical_uri && this.changeCountUnchanged(title)) {
 		this.wiki.addTiddler(new $tw.Tiddler(tiddler,{text:"",_canonical_uri:canonical_uri}));
 	} else {
-		console.log(`Could not convert ${title} to a canonical_uri tiddler`);
+		console.log("Could not convert " + title + " to a canonical_uri tiddler");
 	}
 };
 
 UploadTask.prototype.processTiddlerQueue = function(uploadHandlerCallback) {
-	var self = this;
-	var nextTiddlerIndex = 0;
+	var self = this,
+		nextTiddlerIndex = 0;
 	
 	var deinitializeCallback = function(err,uploadInfoArray) {
 		if(err) {
@@ -179,10 +179,10 @@ UploadTask.prototype.processTiddlerQueue = function(uploadHandlerCallback) {
 	
 	var uploadedTiddlerCallback = function(err,uploadInfo) {
 		if(err) {
-			self.displayError(`there was an error uploading ${uploadInfo.title}, aborting uploads`);
+			self.displayError("there was an error uploading " + uploadInfo.title + ", aborting uploads");
 			uploadHandlerCallback(err);
 		} else {
-			self.logger.log(`upload callback for ${uploadInfo.title}`);
+			self.logger.log("upload callback for " + uploadInfo.title);
 			// Save the canonical_uri if one has been set
 			if(uploadInfo.canonical_uri) {
 				self.tiddlerInfo[uploadInfo.title].canonical_uri = uploadInfo.canonical_uri;
@@ -226,18 +226,33 @@ UploadTask.prototype.processTiddlerQueue = function(uploadHandlerCallback) {
 };
 
 UploadTask.prototype.getTiddlerUploadItem = function(tiddler) {
-	
 	//	TODO:
 		// Need to sanitize tiddler titles to make sure they are valid file names
 		// file names must be unique or we could overwrite the file corresponding to another uploaded tiddler.
-	return {
-		title: tiddler.fields.title,
-		filename: tiddler.fields.title,
-		text: tiddler.fields.text || "",
-		type: tiddler.fields.type || "",
-		isBase64: ($tw.config.contentTypeInfo[tiddler.fields.type] || {}).encoding  === "base64"
-	};
+	return new UploadItem(tiddler);
 }
+
+function UploadItem(tiddler) {
+	this.title = tiddler.fields.title;
+	this.filename = tiddler.fields.title;
+	this.text = tiddler.fields.text || "";
+	this.type = tiddler.fields.type || "text/vnd.tiddlywiki";
+	this.isBase64 = ($tw.config.contentTypeInfo[tiddler.fields.type] || {}).encoding  === "base64";
+};
+
+UploadItem.prototype.getUint8Array = function() {
+	var byteCharacters = atob(this.text),
+		byteArray = new Uint8Array(byteCharacters.length);
+	for(var i=0; i < byteCharacters.length; i++) {
+		byteArray[i] = byteCharacters.charCodeAt(i);
+	}
+	return byteArray;	
+};
+
+UploadItem.prototype.getBlob = function() {
+	var byteArray = this.getUint8Array();
+	return new Blob([byteArray], {type: this.type});
+};
 
 exports.UploadHandler = UploadHandler;
 
