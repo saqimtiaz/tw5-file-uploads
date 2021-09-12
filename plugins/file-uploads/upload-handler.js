@@ -45,7 +45,7 @@ function UploadHandler(options) {
 					// The tiddlers currently matching the upload filter are the paylaod for the upload task
 					var uploadTask = new UploadTask(tiddlersToUpload,{
 						wiki: options.wiki,
-						uploaderConfig: self.wiki.getTiddlerText(self.titleUploader).trim(),
+						uploaderConfig: self.wiki.getTiddlerText(self.titleUploader,"").trim(),
 						logger: self.logger
 					});
 					if(uploadTask && uploadTask.uploader) {
@@ -54,6 +54,8 @@ function UploadHandler(options) {
 						}});
 						self.uploadTask = uploadTask;
 						self.uploadTask.run(callback);
+					} else if(!uploadTask.uploader) {
+						self.logger.alert("Please check the uploader configuration for the [[FileUploads|$:/plugins/commons/file-uploads]] plugin.");
 					}
 				}
 			} else {
