@@ -8,16 +8,22 @@ title: $:/plugins/commons/file-uploads-fission/settings
 </$select>
 
 <$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[direct IPFS]]" variable="_NULL">
+
+<hr>
 [[IPFS Gateway|$:/config/file-uploads/fission/ipfs-gateway]]:
 <$edit-text tiddler="$:/config/file-uploads/fission/ipfs-gateway" field="text" tag="input" />
+
+The canonical file uri will point to a direct IPFS link at the gateway you’ve selected.
+
+Example: //<$text text={{{ [{$:/config/file-uploads/fission/ipfs-gateway}addprefix[https://]addsuffix[/ipfs/Qme7ss3ARVgxv6rXqVPiikMJ8u2NLgmgszg13pYrDKEoiu]] }}}/>//
+<hr>
+
 </$list>
 
 [[Upload folder path relative to root of public folder|$:/config/file-uploads/fission/uploadpath]]: 
 <$edit-text tiddler="$:/config/file-uploads/fission/uploadpath" field="text" tag="input" />
 
-<$list filter="[{$:/config/file-uploads/fission/canonical-uri-type}match[public]]" variable="_NULL">
-URL of configured upload folder:
+The files can be browsed in your Fission public file system at this path:<br>
 //<$text text={{{ [[https://fissionUserName.files.fission.name/p/]addsuffix{$:/config/file-uploads/fission/uploadpath}] }}}/>//
-</$list>
 
 
