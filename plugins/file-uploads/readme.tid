@@ -9,3 +9,10 @@ Storage backends are pluggable and can be added via uploader modules. This plugi
 After installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/commons/file-uploads/settings]] of this plugin.
 
 This plugin uses a [[filter|$:/config/fileUploadFilter]] to determine which tiddlers are uploaded. The default filter uploads all binary tiddlers over 100kb in size.
+
+Alternatively, you can disable the automatic file uploads and use the widget message `tm-upload-tiddlers` to manually upload specific tiddlers as files. The message accepts a `param` that is a filter which specifies the tiddlers to upload.
+
+Examples:
+
+* `<$action-sendmessage $message="tm-upload-tiddlers" $param="MyTiddler"/>`
+* `<$action-sendmessage $message="tm-upload-tiddlers" $param="[type[image/png]]"/>`
