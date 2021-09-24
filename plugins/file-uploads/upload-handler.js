@@ -20,21 +20,49 @@ function UploadHandler(options) {
 	var self = this;
 	this.wiki = options.wiki;
 	this.logger = new $tw.utils.Logger("upload-handler");
+	this.options = options;
+
+	var callback = function(err,nextCallback) {
+		delete self.uploadTask;
+		if(!err) {
+			//self.logger.clearAlerts();
+			$tw.notifier.display(self.titleUploadedNotification);
+			if(nextCallback) {
+				self.logger.log("checking for pending uploads");
+				// Check if there are any new tiddlers that need to be uploaded
+				$tw.utils.nextTick(nextCallback);
+			}
+		}
+	};
+
+	var runTask = function(uploadTask,nextCallback) {
+		$tw.notifier.display(self.titleUploadingNotification,{variables:{
+			count: uploadTask.taskTiddlers.length.toString()
+		}});
+		self.uploadTask = uploadTask;
+		self.uploadTask.run(function(err){
+			callback(err,nextCallback);
+		});
+	}
+
+	$tw.rootWidget.addEventListener("tm-upload-tiddlers",function(event){
+		var filter = event.param ||"",
+			tiddlersToUpload = self.wiki.filterTiddlers(filter,$tw.rootWidget);
+		if(!self.uploadTask) {
+			var uploadTask = self.getUploadTask(tiddlersToUpload);
+			if(uploadTask) {
+				runTask(uploadTask);
+			}
+		} else {
+			self.logger.alert("There is already an upload task in progress.");
+		}
+	});
+
 	this.wiki.addEventListener("change",function(changes){
 		var uploadsEnabled = self.wiki.getTiddlerText(self.titleUploadsEnabled,"yes").trim() === "yes";
 		if(!uploadsEnabled) {
 			return;
 		}
-		var callback = function(err) {
-			delete self.uploadTask;
-			if(!err) {
-				//self.logger.clearAlerts();
-				$tw.notifier.display(self.titleUploadedNotification);
-				self.logger.log("checking for pending uploads");
-				// Check if there are any new tiddlers that need to be uploaded
-				$tw.utils.nextTick(upload);
-			}
-		};
 		var upload = function() {
 			var uploadFilter = self.wiki.getTiddlerText(self.titleFileUploadFilter),
 				tiddlersToUpload = self.wiki.filterTiddlers(uploadFilter);
@@ -43,19 +71,9 @@ function UploadHandler(options) {
 				// If an upload task is already in progress then new tiddlers that need to be uploaded will be picked up in the next task 
 				if(!self.uploadTask) {
 					// The tiddlers currently matching the upload filter are the paylaod for the upload task
-					var uploadTask = new UploadTask(tiddlersToUpload,{
-						wiki: options.wiki,
-						uploaderConfig: self.wiki.getTiddlerText(self.titleUploader,"").trim(),
-						logger: self.logger
-					});
-					if(uploadTask && uploadTask.uploader) {
-						$tw.notifier.display(self.titleUploadingNotification,{variables:{
-							count: tiddlersToUpload.length.toString()
-						}});
-						self.uploadTask = uploadTask;
-						self.uploadTask.run(callback);
-					} else if(!uploadTask.uploader) {
-						self.logger.alert("Please check the uploader configuration for the [[FileUploads|$:/plugins/commons/file-uploads]] plugin.");
+					var uploadTask = self.getUploadTask(tiddlersToUpload);
+					if(uploadTask) {
+						runTask(uploadTask,upload);
 					}
 				}
 			} else {
@@ -76,6 +94,7 @@ function UploadHandler(options) {
 			upload();
 		}
 	});
+
 	$tw.addUnloadTask(function(event) {
 		var confirmationMessage;
 		if(self.isDirty()) {
@@ -85,6 +104,20 @@ function UploadHandler(options) {
 		}
 		return confirmationMessage;
 	});
+};
+
+UploadHandler.prototype.getUploadTask = function(tiddlersToUpload) {
+	var uploadTask = new UploadTask(tiddlersToUpload,{
+		wiki: this.wiki,
+		uploaderConfig: this.wiki.getTiddlerText(this.titleUploader,"").trim(),
+		logger: this.logger
+	});
+	if(!uploadTask.uploader) {
+		this.logger.alert("Please check the uploader configuration for the [[FileUploads|$:/plugins/commons/file-uploads]] plugin.");
+		return null;
+	} else {
+		return uploadTask;
+	}
 };
 
 UploadHandler.prototype.isDirty = function() {
