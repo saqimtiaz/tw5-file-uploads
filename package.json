@@ -6,11 +6,13 @@
     "tiddlywiki": "^5.1.23"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "tw-pre": "github:Jermolene/TiddlyWiki5"
   },
   "scripts": {
     "build": "node ./node_modules/tiddlywiki/tiddlywiki.js . --build index",
-    "dev": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki/tiddlywiki.js . --listen port=7111"
+    "dev": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tiddlywiki/tiddlywiki.js . --listen port=7111",
+    "dev-pre": "npx nodemon -e tid,multids,js,info --watch plugins ./node_modules/tw-pre/tiddlywiki.js . --listen port=7111" 
   },
   "author": "Saq Imtiaz",
   "license": "BSD-3-Clause",
