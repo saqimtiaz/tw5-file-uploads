@@ -3,16 +3,15 @@ title: $:/plugins/commons/file-uploads/settings
 File uploader modules add support for different storage backends to upload files to.
 
 <$link to="$:/config/fileUploader">File uploader: </$link><$select tiddler="$:/config/fileUploader">
-<$list filter="[uploaders[]]">
+<$list filter="[[uploader]modules[]moduleproperty[name]]">
 <option value=<<currentTiddler>>><$transclude field="title"><$text text=<<currentTiddler>>/></$transclude></option>
 </$list>
 </$select>
 
-<$vars uploaderPlugin={{{ [[$:/plugins/commons/file-uploads-]addsuffix{$:/config/fileUploader}]" }}}>
-<$list filter="[<uploaderPlugin>plugintiddlers[]] :filter[removeprefix<uploaderPlugin>match[/settings]]" variable="settingsTiddler">
+<$vars uploaderPlugin={{{ [[uploader]modules[name],{$:/config/fileUploader}shadowsource[]] }}}>
+<$list filter="[<uploaderPlugin>!match[$:/plugins/commons/file-uploads]plugintiddlers[]] :filter[removeprefix<uploaderPlugin>match[/settings]]" variable="settingsTiddler">
 
 	<$transclude tiddler=<<uploaderPlugin>> subtiddler=<<settingsTiddler>>/>
 
 </$list>
-
 </$vars>
