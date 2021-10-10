@@ -285,8 +285,12 @@ UploadItem.prototype.getUint8Array = function() {
 };
 
 UploadItem.prototype.getBlob = function() {
-	var byteArray = this.getUint8Array();
-	return new Blob([byteArray], {type: this.type});
+	if(this.isBase64) {
+		var byteArray = this.getUint8Array();
+		return new Blob([byteArray], {type: this.type});		
+	} else {
+		return new Blob([this.text],{type: "text/plain"});
+	}
 };
 
 exports.UploadHandler = UploadHandler;
