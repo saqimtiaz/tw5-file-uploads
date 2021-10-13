@@ -11,7 +11,7 @@ module-type: startup
 
 exports.name = "upload-handler";
 exports.platforms = ["browser"];
-exports.after = ["load-modules"];
+exports.after = ["startup"];
 
 exports.startup = function() {
 	$tw.uploadHandler = new $tw.UploadHandler({
