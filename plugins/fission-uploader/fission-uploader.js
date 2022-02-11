@@ -122,7 +122,7 @@ FissionUploader.prototype.uploadFile = function(uploadItem,callback) {
 /*
 Arguments:
 callback accepts two arguments:
-	status: true if there was no error, otherwise false
+	err: error object if there was an error
 	uploadInfoArray (optional): array of uploadInfo objects corresponding to the tiddlers that have been uploaded
 		this is needed and should set the canonical_uri for each uploadItem if:
 		- (a) uploadInfo.uploadComplete was not set to true in uploadFile AND 
