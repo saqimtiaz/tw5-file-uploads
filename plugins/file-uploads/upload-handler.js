@@ -176,9 +176,11 @@ UploadTask.prototype.changeCountUnchanged = function(title) {
 // - the tiddler has not changed since we uploaded it
 UploadTask.prototype.makeCanonicalURITiddler = function(title) {
 	var tiddler = this.wiki.getTiddler(title),
-		canonical_uri = this.tiddlerInfo[title].canonical_uri;
+		canonical_uri = this.tiddlerInfo[title].canonical_uri,
+		fields = this.tiddlerInfo[title].fields;
+	
 	if(tiddler && canonical_uri && this.changeCountUnchanged(title)) {
-		this.wiki.addTiddler(new $tw.Tiddler(tiddler,{text:"",_canonical_uri:canonical_uri}));
+		this.wiki.addTiddler(new $tw.Tiddler(tiddler,{text:"",_canonical_uri:canonical_uri},fields));
 	} else {
 		console.log("Could not convert " + title + " to a canonical_uri tiddler");
 	}
@@ -195,9 +197,12 @@ UploadTask.prototype.processTiddlerQueue = function(uploadHandlerCallback) {
 		} else {
 			// Some uploaders may not have canonical_uris earlier and may pass an array of item objects with canonical_uri set
 			$tw.utils.each(uploadInfoArray,function(uploadInfo){
-				// For every uploaded tiddler save the canonical_uri if one has been returned
+				// For every uploaded tiddler save the canonical_uri and fields if one has been returned
 				if(uploadInfo.uploadComplete && uploadInfo.canonical_uri && uploadInfo.title && self.tiddlerInfo[uploadInfo.title]) {
 					self.tiddlerInfo[uploadInfo.title].canonical_uri = uploadInfo.canonical_uri;
+					if(uploadInfo.fields) {
+						self.tiddlerInfo[uploadInfo.title].fields = uploadInfo.fields;
+					}
 				}
 			});
 			// Convert all uploaded tiddlers for which we have a canonical_uri to canonical_uri tiddlers
@@ -221,6 +226,10 @@ UploadTask.prototype.processTiddlerQueue = function(uploadHandlerCallback) {
 			// Save the canonical_uri if one has been set
 			if(uploadInfo.canonical_uri) {
 				self.tiddlerInfo[uploadInfo.title].canonical_uri = uploadInfo.canonical_uri;
+			}
+			// Save the fields if one has been set
+			if(uploadInfo.fields) {
+				self.tiddlerInfo[uploadInfo.title].fields = uploadInfo.fields;
 			}
 			// If uploadComplete is true then convert the tiddler to a canonical_uri tiddler
 			if(uploadInfo.uploadComplete) {

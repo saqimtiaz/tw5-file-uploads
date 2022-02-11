@@ -5,7 +5,7 @@ module-type: uploader
 
 Handles uploading files to Github
 Uses the username, repository and access token from the Github saver
-File sare saved to the "files" directory in the root of repository, existing files are overwritten.
+Files are saved to the "files" directory in the root of repository, existing files are overwritten.
 
 \*/
 (function(){
@@ -135,6 +135,7 @@ callback accepts two arguments:
 	uploadItemInfo: object corresponding to the tiddler being uploaded with the following properties set:
 	- title
 	- canonical_uri (if available)
+	- fields (optional)
 	- uploadComplete (boolean)
 	- getUint8Array()
 	- getBlob()
@@ -159,7 +160,7 @@ GithubUploader.prototype.uploadFile = function(uploadItem,callback) {
 /*
 Arguments:
 callback accepts two arguments:
-	status: true if there was no error, otherwise false
+	err: error object if there was an error
 	uploadInfoArray (optional): array of uploadInfo objects corresponding to the tiddlers that have been uploaded
 		this is needed and should set the canonical_uri for each uploadItem if:
 		- (a) uploadInfo.uploadComplete was not set to true in uploadFile AND 
