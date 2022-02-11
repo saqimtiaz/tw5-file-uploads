@@ -179,10 +179,8 @@ UploadTask.prototype.makeCanonicalURITiddler = function(title) {
 		canonical_uri = this.tiddlerInfo[title].canonical_uri,
 		fields = this.tiddlerInfo[title].fields;
 	
-	var options = Object.assign({},{text:"",_canonical_uri:canonical_uri},fields);
-	
 	if(tiddler && canonical_uri && this.changeCountUnchanged(title)) {
-		this.wiki.addTiddler(new $tw.Tiddler(tiddler,options));
+		this.wiki.addTiddler(new $tw.Tiddler(tiddler,{text:"",_canonical_uri:canonical_uri},fields));
 	} else {
 		console.log("Could not convert " + title + " to a canonical_uri tiddler");
 	}
