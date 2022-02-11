@@ -6,5 +6,5 @@
 	"core-version": ">=5.2.0",
 	"plugin-priority": 0,
 	"list": "readme settings",
-	"version": "0.1.6"
+	"version": "0.1.7"
 }

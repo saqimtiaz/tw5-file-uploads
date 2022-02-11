@@ -135,6 +135,7 @@ callback accepts two arguments:
 	uploadItemInfo: object corresponding to the tiddler being uploaded with the following properties set:
 	- title
 	- canonical_uri (if available)
+	- fields (optional)
 	- uploadComplete (boolean)
 	- getUint8Array()
 	- getBlob()
