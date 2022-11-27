@@ -11,4 +11,4 @@ The plugin itself includes a "dummy" uploader module which implements the interf
 
 It is recommended to **disable AutoSave when using this plugin**, to avoid saving imported binary tiddlers twice and using up twice the bandwidth.
 
-The development of this plugin and the uploader modules is being funded via [OpenCollective](https://opencollective.com/tiddlywiki-on-fission/projects/tiddlywiki-file-upload)
+The development of this plugin and the uploader modules is being funded via [OpenCollective](https://opencollective.comtiddlywikidotorg/projects/tiddlywiki-file-uploadd)
